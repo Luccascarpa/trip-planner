@@ -3,9 +3,10 @@ import { supabase } from '../lib/supabase';
 import type { Database } from '../lib/database.types';
 
 type Reservation = Database['public']['Tables']['reservations']['Row'];
+type RestaurantJournal = Reservation; // Alias for clarity
 
 export function useReservations(tripId: string | undefined) {
-  const [reservations, setReservations] = useState<Reservation[]>([]);
+  const [reservations, setReservations] = useState<RestaurantJournal[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -24,8 +25,7 @@ export function useReservations(tripId: string | undefined) {
         .from('reservations')
         .select('*')
         .eq('trip_id', tripId)
-        .order('reservation_date', { ascending: true })
-        .order('reservation_time', { ascending: true });
+        .order('created_at', { ascending: false });
 
       if (error) throw error;
       setReservations(data || []);

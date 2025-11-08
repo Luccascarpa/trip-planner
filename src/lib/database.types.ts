@@ -175,57 +175,78 @@ export interface Database {
           trip_id: string
           place_id: string | null
           restaurant_name: string
-          reservation_date: string
-          reservation_time: string
-          party_size: number
+          neighborhood: string | null
           latitude: number | null
           longitude: number | null
           address: string | null
-          confirmation_number: string | null
           phone_number: string | null
-          email: string | null
-          special_requests: string | null
-          status: string
+          website_url: string | null
+          menu_url: string | null
+          go_no_go: boolean
+          select_status: string | null
+          reservation_status: string | null
+          description: string | null
+          cuisine: string | null
+          price_range: string | null
+          rating: number | null
+          sample_menu_highlights: string | null
+          insider_tips: Json | null
           notes: string | null
+          images: Json | null
           created_at: string
+          updated_at: string
         }
         Insert: {
           id?: string
           trip_id: string
           place_id?: string | null
           restaurant_name: string
-          reservation_date: string
-          reservation_time: string
-          party_size: number
+          neighborhood?: string | null
           latitude?: number | null
           longitude?: number | null
           address?: string | null
-          confirmation_number?: string | null
           phone_number?: string | null
-          email?: string | null
-          special_requests?: string | null
-          status?: string
+          website_url?: string | null
+          menu_url?: string | null
+          go_no_go?: boolean
+          select_status?: string | null
+          reservation_status?: string | null
+          description?: string | null
+          cuisine?: string | null
+          price_range?: string | null
+          rating?: number | null
+          sample_menu_highlights?: string | null
+          insider_tips?: Json | null
           notes?: string | null
+          images?: Json | null
           created_at?: string
+          updated_at?: string
         }
         Update: {
           id?: string
           trip_id?: string
           place_id?: string | null
           restaurant_name?: string
-          reservation_date?: string
-          reservation_time?: string
-          party_size?: number
+          neighborhood?: string | null
           latitude?: number | null
           longitude?: number | null
           address?: string | null
-          confirmation_number?: string | null
           phone_number?: string | null
-          email?: string | null
-          special_requests?: string | null
-          status?: string
+          website_url?: string | null
+          menu_url?: string | null
+          go_no_go?: boolean
+          select_status?: string | null
+          reservation_status?: string | null
+          description?: string | null
+          cuisine?: string | null
+          price_range?: string | null
+          rating?: number | null
+          sample_menu_highlights?: string | null
+          insider_tips?: Json | null
           notes?: string | null
+          images?: Json | null
           created_at?: string
+          updated_at?: string
         }
       }
       journal_entries: {

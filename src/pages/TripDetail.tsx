@@ -10,8 +10,8 @@ import MapView from '../components/MapView';
 import PlacesList from '../components/PlacesList';
 import PlaceModal from '../components/PlaceModal';
 import DayNavigation from '../components/DayNavigation';
-import ReservationsView from '../components/ReservationsView';
-import ReservationModal from '../components/ReservationModal';
+import RestaurantTableView from '../components/RestaurantTableView';
+import RestaurantJournalModal from '../components/RestaurantJournalModal';
 import { ScrapbookEditor } from '../components/ScrapbookEditor';
 import ShareTripModal from '../components/ShareTripModal';
 import { Plus, List, Map as MapIcon, Utensils, BookImage, Users } from 'lucide-react';
@@ -251,11 +251,18 @@ export default function TripDetail() {
             </div>
           )
         ) : viewMode === 'reservations' ? (
-          <ReservationsView
-            reservations={reservations}
+          <RestaurantTableView
+            restaurants={reservations}
             onEdit={handleEditReservation}
             onDelete={deleteReservation}
             onAdd={handleAddReservation}
+            onToggleGoNoGo={async (id, value) => {
+              try {
+                await updateReservation(id, { go_no_go: value });
+              } catch (error) {
+                console.error('Error updating go/no-go:', error);
+              }
+            }}
           />
         ) : viewMode === 'map' ? (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
@@ -308,8 +315,8 @@ export default function TripDetail() {
       )}
 
       {showReservationModal && (
-        <ReservationModal
-          reservation={selectedReservation}
+        <RestaurantJournalModal
+          restaurant={selectedReservation}
           onSave={handleSaveReservation}
           onClose={() => {
             setShowReservationModal(false);
